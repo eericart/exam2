@@ -1,4 +1,8 @@
 h1 Listing teachers
+div class="btn-group"
+  == form_tag('/teachers', method: "GET") do
+    == submit_tag :Active, :name => "sort", class:"btn btn-default"
+    == submit_tag :Name, :name => "sort",class:"btn btn-default"
 div class="row"
   div class="col-md-8"
     table class="table table-bordered"
@@ -18,5 +22,7 @@ div class="row"
           td == link_to 'Edit', edit_teacher_path(teacher)
           td == link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' }
 br
+
+
 
 == link_to 'New teacher', new_teacher_path, class:"btn btn-default"
