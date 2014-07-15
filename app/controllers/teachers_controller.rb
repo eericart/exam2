@@ -11,6 +11,7 @@ class TeachersController < ApplicationController
     else
       @teachers = Teacher.all
     end
+
   end
 
   # GET /teachers/1
