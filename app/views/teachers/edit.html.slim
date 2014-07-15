@@ -1,0 +1,23 @@
+h1 Editing teacher
+
+== bootstrap_form_for(@teacher) do |f|
+  - if @teacher.errors.any?
+    div class="alert alert-danger"
+      h2 == (pluralize @teacher.errors.count, "error")
+
+      ul
+      - @teacher.errors.full_messages.each do |message|
+        li == message
+
+  == f.text_field :name, {disabled:true}
+  == f.text_field :teacher_code, {disabled:true}
+  == f.fields_for :subjects do |ff|
+    h2 Subject
+    == ff.text_field :name
+    == ff.text_field :code
+    == ff.check_box :active
+  == f.submit
+
+
+== link_to 'Show', @teacher
+== link_to 'Back', teachers_path

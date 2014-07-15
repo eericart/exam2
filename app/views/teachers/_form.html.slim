@@ -1,0 +1,18 @@
+== bootstrap_form_for(@teacher) do |f|
+  - if @teacher.errors.any?
+    div class="alert alert-danger"
+      h2 == (pluralize @teacher.errors.count, "error")
+
+      ul
+      - @teacher.errors.full_messages.each do |message|
+        li == message
+
+  == f.text_field :name
+  == f.text_field :teacher_code
+  == f.fields_for :subjects do |ff|
+    h2 Subject
+    == ff.text_field :name
+    == ff.text_field :code
+    == ff.check_box :active
+  == f.submit
+
