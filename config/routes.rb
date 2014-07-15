@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :teachers
+  match "/teachers/new", to:'teachers#new' , via: "post"
+  match  "/teachers/:id/edit", to:"teachers#update", via: "patch"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

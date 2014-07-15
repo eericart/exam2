@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715143859) do
+ActiveRecord::Schema.define(version: 20140715152936) do
 
   create_table "subjects", force: true do |t|
     t.string   "name"
     t.string   "code"
-    t.boolean  "active"
+    t.boolean  "active",     default: false
     t.integer  "teacher_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -4,7 +4,7 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.order("namse Desc")
   end
 
   # GET /teachers/1
@@ -15,10 +15,12 @@ class TeachersController < ApplicationController
   # GET /teachers/new
   def new
     @teacher = Teacher.new
+    6.times {@teacher.subjects.build}
   end
 
   # GET /teachers/1/edit
   def edit
+    @teacher.subjects.all
   end
 
   # POST /teachers
@@ -69,6 +71,6 @@ class TeachersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:name, :teacher_code)
+      params.require(:teacher).permit(:name, :teacher_code,subjects_attributes:[:id,:name, :code, :active])
     end
 end
